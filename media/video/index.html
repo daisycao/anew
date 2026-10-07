@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Anew promo</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hyperframes/core/dist/hyperframe.runtime.iife.js"></script>
+    <style>
+      /* 和 App 同一套（native/style.css 0.2 那段）：靛青主色、冷白纸；标题用 App 的衬线 Iowan Old Style */
+      :root {
+        --bg: #f1f3f6;
+        --paper-bright: #fbfcfd;
+        --ink: #1f2530;
+        --ink-soft: #465061;
+        --muted: #737c8c;
+        --accent: #34549a;
+        --accent-pale: #dce4f4;
+        --clay: #b0643f;
+        --amber: #b8862f;
+        --font-display: "Iowan Old Style", "Palatino", Georgia, serif;
+        --font-ui: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+        --font-data: "SF Mono", Menlo, monospace;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--ink); }
+      .scene { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+      .scene-content { width: 100%; height: 100%; position: relative; z-index: 1; }
+      .clip {}
+
+      /* 截图和镜头 */
+      .cam { position: absolute; inset: 0; will-change: transform; }
+      .shot { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; display: block; }
+      .stack .shot { visibility: hidden; }
+
+      /* 字幕：样张里定下来的那种 */
+      .cap { position: absolute; left: 0; right: 0; bottom: 64px; display: flex; justify-content: center; z-index: 20; pointer-events: none; }
+      .cap span { padding: 16px 36px; border-radius: 16px; background: rgba(31, 37, 48, 0.92); color: #fff;
+        font: 600 46px/1.2 var(--font-display); letter-spacing: 0.2px; white-space: nowrap; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22); }
+      .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; z-index: 19;
+        background: linear-gradient(transparent, rgba(31, 37, 48, 0.42)); }
+
+      /* s1 聊天 */
+      .chat { position: absolute; left: 50%; top: 0; width: 1040px; margin-left: -520px; display: flex; flex-direction: column; gap: 28px; padding-top: 140px; }
+      .bubble { max-width: 760px; padding: 22px 30px; border-radius: 26px; font: 400 30px/1.45 var(--font-ui); }
+      .bubble.me { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 8px; }
+      .bubble.ai { align-self: flex-start; background: #fff; color: var(--ink-soft); border: 1px solid #d7dde6; border-bottom-left-radius: 8px; }
+      .chat-fade { position: absolute; left: 0; right: 0; top: 0; height: 220px; background: linear-gradient(var(--bg), transparent); z-index: 2; }
+
+      /* 终端 */
+      .term { position: absolute; width: 1120px; border-radius: 16px; overflow: hidden; background: #1b2029; z-index: 15;
+        box-shadow: 0 30px 80px rgba(17, 24, 39, 0.35); font: 400 23px/1.65 var(--font-data); color: #d8dee9; }
+      .term-bar { height: 44px; background: #262c37; display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+      .term-bar i { width: 14px; height: 14px; border-radius: 50%; background: #4a5263; display: block; }
+      .term-bar b { margin-left: 14px; font: 500 18px/1 var(--font-ui); color: #8a93a5; }
+      .term-body { padding: 22px 28px 26px; }
+      .term-line { white-space: nowrap; overflow: hidden; }
+      .t-prompt { color: #8fa9dc; }
+      .t-dim { color: #7d8697; }
+      .t-ok { color: #e6c27a; }
+
+      /* s4 页边的一来一回 */
+      .dim { position: absolute; inset: 0; background: rgba(241, 243, 246, 0.86); }
+      .quote { position: absolute; left: 150px; top: 150px; width: 860px; font: italic 400 50px/1.32 var(--font-display); color: var(--ink); }
+      .quote mark { background: linear-gradient(transparent 58%, #f3dfae 58%) no-repeat 0 0 / 0% 100%; color: inherit; }
+      .quote small { display: block; margin-top: 22px; font: 400 24px/1 var(--font-ui); font-style: normal; color: var(--muted); letter-spacing: 0.5px; }
+      .steps { position: absolute; left: 150px; top: 520px; display: flex; flex-direction: column; gap: 22px; }
+      .step { display: flex; align-items: center; gap: 22px; font: 500 34px/1.2 var(--font-ui); color: var(--ink); }
+      .step em { font-style: normal; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font: 700 22px/1 var(--font-ui); color: #fff; background: var(--ink-soft); flex: none; }
+      .step.ai em { background: var(--accent); }
+      .step.ai { color: var(--accent); }
+      .viewport { position: absolute; left: 1190px; top: 70px; width: 600px; height: 880px; overflow: hidden; border-radius: 18px; }
+      .reveal { position: absolute; left: 0; top: 0; width: 600px; overflow: hidden; height: 0; }
+      .column { width: 600px; display: block; }
+      .vp-shadow { position: absolute; left: 1190px; top: 70px; width: 600px; height: 880px; border-radius: 18px; box-shadow: 0 20px 60px rgba(31, 37, 48, 0.16); }
+
+      /* 叠在截图上的标记 */
+      .badge { position: absolute; padding: 12px 24px; border-radius: 999px; background: var(--accent); color: #fff; z-index: 12;
+        font: 700 30px/1 var(--font-ui); box-shadow: 0 10px 28px rgba(52, 84, 154, 0.35); }
+      .badge s { opacity: 0.6; margin-right: 8px; }
+      .ring { position: absolute; border: 4px solid var(--clay); border-radius: 16px; box-shadow: 0 0 0 8px rgba(176, 100, 63, 0.14); z-index: 12; }
+      .cover { position: absolute; background: var(--paper-bright); z-index: 5; }
+      .flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 14; }
+
+      /* s8 片尾 */
+      .end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; }
+      .end img { width: 190px; height: 190px; }
+      .word { font: 700 128px/1 var(--font-display); color: var(--ink); letter-spacing: -1px; }
+      
+      .tagline { font: italic 400 48px/1.2 var(--font-display); color: var(--ink-soft); }
+      .meta { font: 500 24px/1 var(--font-ui); color: var(--muted); letter-spacing: 1.5px; }
+      .char { display: inline-block; }
+    .round { position: absolute; left: 50%; transform: translateX(-50%); top: 26px; z-index: 13; padding: 12px 22px; border-radius: 12px; background: rgba(31,37,48,.9); color: #fff; font: 600 24px/1 var(--font-ui); letter-spacing: .3px; }
+      .round b { color: #e6c27a; margin-right: 10px; }
+    </style>
+  </head>
+  <body>
+    <div id="main" data-composition-id="main" data-width="1920" data-height="1080" data-start="0" data-duration="47.5">
+
+      <!-- S1 0–7 读原文，划一句，写下自己的想法 -->
+      <div class="scene clip" id="s1" data-start="0" data-duration="7" data-track-index="0">
+        <div class="scene-content">
+          <div class="cam stack" id="s1-cam">
+            <img class="shot" id="a1" src="shots/a1-source.png" />
+            <img class="shot" id="a2-sel" src="shots/a2-select.png" />
+            <img class="shot" id="a2-pop" src="shots/a2-popover.png" />
+            <img class="shot" id="a2-t01" src="shots/a2-type-01.png" />
+            <img class="shot" id="a2-t02" src="shots/a2-type-02.png" />
+            <img class="shot" id="a2-t03" src="shots/a2-type-03.png" />
+            <img class="shot" id="a2-t04" src="shots/a2-type-04.png" />
+            <img class="shot" id="a2-t05" src="shots/a2-type-05.png" />
+            <img class="shot" id="a2-t06" src="shots/a2-type-06.png" />
+            <img class="shot" id="a2-t07" src="shots/a2-type-07.png" />
+            <img class="shot" id="a2-t08" src="shots/a2-type-08.png" />
+            <img class="shot" id="a2-t09" src="shots/a2-type-09.png" />
+            <img class="shot" id="a2-t10" src="shots/a2-type-10.png" />
+            <img class="shot" id="a2-t11" src="shots/a2-type-11.png" />
+            <img class="shot" id="a2-t12" src="shots/a2-type-12.png" />
+            <img class="shot" id="a2-t13" src="shots/a2-type-13.png" />
+            <img class="shot" id="a2-t14" src="shots/a2-type-14.png" />
+            <img class="shot" id="a2-t15" src="shots/a2-type-15.png" />
+            <img class="shot" id="a2-t16" src="shots/a2-type-16.png" />
+            <img class="shot" id="a2-t17" src="shots/a2-type-17.png" />
+            <img class="shot" id="a2-t18" src="shots/a2-type-18.png" />
+            <img class="shot" id="a3" src="shots/a3-saved.png" />
+          </div>
+          <div class="shade"></div>
+          <div class="cap" id="s1-cap"><span>Read. Argue in the margins.</span></div>
+        </div>
+      </div>
+
+      <!-- S2 7–11 交给 AI ▾ → Process annotations → 贴进 Claude Code -->
+      <div class="scene clip" id="s2" data-start="7" data-duration="4" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="cam stack" id="s2-cam">
+            <img class="shot" id="a4m" src="shots/a4-menu.png" />
+            <img class="shot" id="a4c" src="shots/a4-copied.png" />
+          </div>
+          <div class="term" id="s2-term" style="left:700px; top:230px;">
+            <div class="term-bar"><i></i><i></i><i></i><b>Anew Notes — claude</b></div>
+            <div class="term-body">
+              <div class="term-line" id="s2-l1"><span class="t-prompt">&gt;</span> Process annotations: …/source-Franklin 1748-1005.md (2 waiting)</div>
+              <div class="term-line t-dim" id="s2-l2">⏺ Saved the old note as old-process annotations-1005.md</div>
+              <div class="term-line t-dim" id="s2-l3">⏺ Checked both annotations, added 2 cards</div>
+              <div class="term-line t-ok" id="s2-l4">⏺ Rewrote the note: now version 2</div>
+            </div>
+          </div>
+          <div class="shade"></div>
+          <div class="cap" id="s2-cap"><span>Hand it to Claude.</span></div>
+        </div>
+      </div>
+
+      <!-- S3 11–17.5 Claude 直接改笔记：v1 → v2，改动标绿 -->
+      <div class="scene clip" id="s3" data-start="11" data-duration="6.5" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="cam stack" id="s3-cam">
+            <img class="shot" id="b1" src="shots/b1-note-v1.png" />
+            <img class="shot" id="b2" src="shots/b2-note-v2.png" />
+            <img class="shot" id="b3" src="shots/b3-note-v2-card.png" />
+          </div>
+          <div class="flash" id="s3-flash"></div>
+          <div class="badge" id="s3-badge" style="left:1430px; top:262px;"><s>v1</s>→ v2</div>
+          <div class="ring" id="s3-ring" style="left:452px; top:520px; width:1050px; height:180px;"></div>
+          <div class="shade"></div>
+          <div class="cap" id="s3-cap1"><span>Claude edits the note itself.</span></div>
+          <div class="cap" id="s3-cap2"><span>Your words stay yours. Its checks go in cards.</span></div>
+        </div>
+      </div>
+
+      <!-- S4 17.5–29 第二轮：在 Claude 的卡片上回一句，再交给它 -->
+      <div class="scene clip" id="s4" data-start="17.5" data-duration="11.5" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="cam stack" id="s4-cam">
+            <img class="shot" id="c1" src="shots/c1-note-v2.png" />
+            <img class="shot" id="c2-sel" src="shots/c2-select.png" />
+            <img class="shot" id="c2-pop" src="shots/c2-popover.png" />
+            <img class="shot" id="c2-t01" src="shots/c2-type-01.png" />
+            <img class="shot" id="c2-t02" src="shots/c2-type-02.png" />
+            <img class="shot" id="c2-t03" src="shots/c2-type-03.png" />
+            <img class="shot" id="c2-t04" src="shots/c2-type-04.png" />
+            <img class="shot" id="c2-t05" src="shots/c2-type-05.png" />
+            <img class="shot" id="c2-t06" src="shots/c2-type-06.png" />
+            <img class="shot" id="c2-t07" src="shots/c2-type-07.png" />
+            <img class="shot" id="c2-t08" src="shots/c2-type-08.png" />
+            <img class="shot" id="c2-t09" src="shots/c2-type-09.png" />
+            <img class="shot" id="c2-t10" src="shots/c2-type-10.png" />
+            <img class="shot" id="c2-t11" src="shots/c2-type-11.png" />
+            <img class="shot" id="c2-t12" src="shots/c2-type-12.png" />
+            <img class="shot" id="c2-t13" src="shots/c2-type-13.png" />
+            <img class="shot" id="c2-t14" src="shots/c2-type-14.png" />
+            <img class="shot" id="c3" src="shots/c3-saved.png" />
+            <img class="shot" id="c4m" src="shots/c4-menu.png" />
+            <img class="shot" id="c4c" src="shots/c4-copied.png" />
+          </div>
+          <div class="round" id="s4-round"><b>Round 2</b>Talk back to Claude, in the note</div>
+          <div class="term" id="s4-term" style="left:700px; top:230px;">
+            <div class="term-bar"><i></i><i></i><i></i><b>Anew Notes — claude</b></div>
+            <div class="term-body">
+              <div class="term-line" id="s4-l1"><span class="t-prompt">&gt;</span> Process annotations: …/Time is money — was Franklin right.md (1 waiting)</div>
+              <div class="term-line t-dim" id="s4-l2">⏺ Saved v2 as old-process annotations-1006.md</div>
+              <div class="term-line t-dim" id="s4-l3">⏺ Added section 4: your words under 👩, a card citing Bennett, 1910</div>
+              <div class="term-line t-ok" id="s4-l4">⏺ Now version 3</div>
+            </div>
+          </div>
+          <div class="shade"></div>
+          <div class="cap" id="s4-cap1"><span>Disagree? Annotate Claude's card.</span></div>
+          <div class="cap" id="s4-cap2"><span>Hand it back.</span></div>
+        </div>
+      </div>
+
+      <!-- S5 29–34 v2 → v3：你那句成了笔记的一节 -->
+      <div class="scene clip" id="s5" data-start="29" data-duration="5" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="cam" id="s5-cam"><img class="shot" src="shots/d1-note-v3.png" /></div>
+          <div class="flash" id="s5-flash"></div>
+          <div class="badge" id="s5-badge" style="left:1430px; top:200px;"><s>v2</s>→ v3</div>
+          <div class="shade"></div>
+          <div class="cap" id="s5-cap"><span>Your reply becomes part of the note.</span></div>
+        </div>
+      </div>
+
+      <!-- S6 34–39.5 主题图谱：一轮一版 -->
+      <div class="scene clip" id="s6" data-start="34" data-duration="5.5" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="cam" id="s6-cam">
+            <img class="shot" src="shots/e1-graph-topic.png" />
+            <div class="cover" id="s6-c2" style="left:878px; top:385px; width:496px; height:400px;"></div>
+            <div class="cover" id="s6-c3" style="left:1374px; top:385px; width:500px; height:400px;"></div>
+          </div>
+          <div class="shade"></div>
+          <div class="cap" id="s6-cap"><span>Every round is a new version.</span></div>
+        </div>
+      </div>
+
+      <!-- S7 39.5–43.5 分类图谱 -->
+      <div class="scene clip" id="s7" data-start="39.5" data-duration="4" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="cam" id="s7-cam">
+            <img class="shot" src="shots/e2-graph-cat.png" />
+            <div class="cover" id="s7-c" style="left:692px; top:395px; width:964px; height:330px;"></div>
+            <div class="ring" id="s7-ring" style="left:1650px; top:521px; width:184px; height:78px; border-color: var(--accent); box-shadow: 0 0 0 8px rgba(52,84,154,.14);"></div>
+          </div>
+          <div class="shade"></div>
+          <div class="cap" id="s7-cap"><span>Your thinking, as a graph.</span></div>
+        </div>
+      </div>
+
+      <!-- S8 43.5–47.5 片尾（只用英文） -->
+      <div class="scene clip" id="s8" data-start="43.5" data-duration="4" data-track-index="0" style="visibility:hidden;">
+        <div class="scene-content">
+          <div class="end">
+            <img id="s8-icon" src="shots/anew-icon.svg" />
+            <div class="word" id="s8-word"><span class="char">A</span><span class="char">n</span><span class="char">e</span><span class="char">w</span></div>
+            <div class="tagline" id="s8-tag">Read with Claude in the margins.</div>
+            <div class="meta" id="s8-meta">macOS · CLAUDE CODE · PLAIN MARKDOWN · MIT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // --- 场景开关（都用 autoAlpha）---
+      tl.set("#s1", { autoAlpha: 0 }, 7);
+      tl.set("#s2", { autoAlpha: 1 }, 7);    tl.set("#s2", { autoAlpha: 0 }, 11);
+      tl.set("#s3", { autoAlpha: 1 }, 11);   tl.set("#s3", { autoAlpha: 0 }, 17.5);
+      tl.set("#s4", { autoAlpha: 1 }, 17.5); tl.set("#s4", { autoAlpha: 0 }, 29);
+      tl.set("#s5", { autoAlpha: 1 }, 29);   tl.set("#s5", { autoAlpha: 0 }, 34);
+      tl.set("#s6", { autoAlpha: 1 }, 34);   tl.set("#s6", { autoAlpha: 0 }, 39.5);
+      tl.set("#s7", { autoAlpha: 1 }, 39.5); tl.set("#s7", { autoAlpha: 0 }, 43.5);
+      tl.set("#s8", { autoAlpha: 1 }, 43.5);
+
+      // 一叠截图里同一时刻只亮一张
+      function showShot(list, id, t) {
+        list.forEach(function (other) { tl.set(other, { visibility: other === id ? "visible" : "hidden" }, t); });
+      }
+      function typing(prefix, n) { var a = []; for (var i = 1; i <= n; i++) a.push("#" + prefix + "-t" + (i < 10 ? "0" + i : i)); return a; }
+      function terminal(id, lines, t) {
+        tl.from(id, { x: 260, autoAlpha: 0, duration: 0.45, ease: "expo.out" }, t);
+        tl.from(lines[0], { width: 0, duration: 0.8, ease: "steps(30)" }, t + 0.35);
+        for (var i = 1; i < lines.length; i++) tl.from(lines[i], { autoAlpha: 0, x: -12, duration: 0.25, ease: "power2.out" }, t + 1.25 + (i - 1) * 0.4);
+      }
+
+      // === S1 (0–7) 读，划一句，写批注 ===
+      var t1 = typing("a2", 18);
+      var s1 = ["#a1", "#a2-sel", "#a2-pop"].concat(t1, ["#a3"]);
+      showShot(s1, "#a1", 0);
+      showShot(s1, "#a2-sel", 1.3);
+      showShot(s1, "#a2-pop", 2.0);
+      t1.forEach(function (id, i) { showShot(s1, id, 2.3 + i * 0.165); });
+      showShot(s1, "#a3", 6.1);
+      tl.fromTo("#s1-cam", { scale: 1.02, transformOrigin: "50% 30%" }, { scale: 1.12, duration: 1.3, ease: "sine.inOut" }, 0);
+      tl.to("#s1-cam", { scale: 1.22, transformOrigin: "97% 80%", duration: 0.9, ease: "power3.inOut" }, 1.3);
+      tl.to("#s1-cam", { scale: 1.25, duration: 3.8, ease: "none" }, 2.2);
+      tl.to("#s1-cam", { scale: 1.0, duration: 0.8, ease: "expo.out" }, 6.1);
+      tl.from("#s1-cap span", { y: 24, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+
+      // === S2 (7–11) 交给 AI ===
+      showShot(["#a4m", "#a4c"], "#a4m", 7);
+      showShot(["#a4m", "#a4c"], "#a4c", 7.9);
+      tl.fromTo("#s2-cam", { scale: 1.7, transformOrigin: "68% 6%" }, { scale: 1.8, duration: 0.9, ease: "none" }, 7);
+      tl.to("#s2-cam", { scale: 1.0, duration: 0.5, ease: "power3.out" }, 7.9);
+      tl.to("#s2-cam", { filter: "blur(3px)", opacity: 0.7, duration: 0.4, ease: "sine.out" }, 8.3);
+      terminal("#s2-term", ["#s2-l1", "#s2-l2", "#s2-l3", "#s2-l4"], 8.3);
+      tl.from("#s2-cap span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "back.out(1.6)" }, 7.2);
+
+      // === S3 (11–17.5) 笔记 v1 → v2 ===
+      var s3 = ["#b1", "#b2", "#b3"];
+      showShot(s3, "#b1", 11);
+      tl.to("#s3-flash", { opacity: 0.85, duration: 0.12, ease: "power2.in" }, 11.7);
+      showShot(s3, "#b2", 11.82);
+      tl.to("#s3-flash", { opacity: 0, duration: 0.4, ease: "power2.out" }, 11.82);
+      tl.from("#s3-badge", { scale: 0.4, autoAlpha: 0, duration: 0.45, ease: "back.out(2)" }, 12.0);
+      tl.to("#s3-badge", { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 14.0);
+      showShot(s3, "#b3", 14.2);
+      tl.from("#s3-ring", { scale: 1.06, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 14.5);
+      tl.fromTo("#s3-cam", { scale: 1.0, transformOrigin: "50% 45%" }, { scale: 1.05, duration: 6.5, ease: "none" }, 11);
+      tl.from("#s3-cap1 span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 11.9);
+      tl.to("#s3-cap1", { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 13.9);
+      tl.fromTo("#s3-cap2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.01 }, 14.2);
+      tl.from("#s3-cap2 span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "back.out(1.6)" }, 14.2);
+
+      // === S4 (17.5–29) 第二轮：在 Claude 的卡片上批注，再交给它 ===
+      var t4 = typing("c2", 14);
+      var s4 = ["#c1", "#c2-sel", "#c2-pop"].concat(t4, ["#c3", "#c4m", "#c4c"]);
+      showShot(s4, "#c1", 17.5);
+      showShot(s4, "#c2-sel", 18.7);
+      showShot(s4, "#c2-pop", 19.4);
+      t4.forEach(function (id, i) { showShot(s4, id, 19.7 + i * 0.17); });
+      showShot(s4, "#c3", 22.7);
+      showShot(s4, "#c4m", 23.6);
+      showShot(s4, "#c4c", 24.5);
+      tl.from("#s4-round", { x: -40, autoAlpha: 0, duration: 0.5, ease: "expo.out" }, 17.6);
+      tl.to("#s4-round", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 23.4);
+      tl.fromTo("#s4-cam", { scale: 1.0, transformOrigin: "50% 50%" }, { scale: 1.05, duration: 1.2, ease: "sine.inOut" }, 17.5);
+      tl.to("#s4-cam", { scale: 1.35, transformOrigin: "58% 70%", duration: 0.9, ease: "power3.inOut" }, 18.7);
+      tl.to("#s4-cam", { scale: 1.39, duration: 3.1, ease: "none" }, 19.6);
+      tl.to("#s4-cam", { scale: 1.0, duration: 0.6, ease: "expo.out" }, 22.7);
+      tl.to("#s4-cam", { scale: 1.7, transformOrigin: "68% 6%", duration: 0.5, ease: "power3.inOut" }, 23.4);
+      tl.to("#s4-cam", { scale: 1.0, duration: 0.5, ease: "power3.out" }, 24.5);
+      tl.to("#s4-cam", { filter: "blur(3px)", opacity: 0.7, duration: 0.4, ease: "sine.out" }, 24.9);
+      terminal("#s4-term", ["#s4-l1", "#s4-l2", "#s4-l3", "#s4-l4"], 24.9);
+      tl.from("#s4-cap1 span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "back.out(1.6)" }, 17.8);
+      tl.to("#s4-cap1", { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 23.4);
+      tl.fromTo("#s4-cap2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.01 }, 23.6);
+      tl.from("#s4-cap2 span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "back.out(1.6)" }, 23.6);
+
+      // === S5 (29–34) v3 ===
+      tl.fromTo("#s5-flash", { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: "power2.out" }, 29);
+      tl.from("#s5-badge", { scale: 0.4, autoAlpha: 0, duration: 0.45, ease: "back.out(2)" }, 29.3);
+      tl.fromTo("#s5-cam", { scale: 1.0, transformOrigin: "40% 55%" }, { scale: 1.12, duration: 5, ease: "sine.inOut" }, 29);
+      tl.from("#s5-cap span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 29.5);
+
+      // === S6 (34–39.5) 主题图谱：v1 → v2 → v3 ===
+      tl.fromTo("#s6-cam", { scale: 1.08, transformOrigin: "60% 50%" }, { scale: 1.0, duration: 5.5, ease: "sine.out" }, 34);
+      tl.to("#s6-c2", { scaleX: 0, transformOrigin: "right center", duration: 0.9, ease: "power2.inOut" }, 35.0);
+      tl.to("#s6-c3", { scaleX: 0, transformOrigin: "right center", duration: 0.9, ease: "power2.inOut" }, 36.4);
+      tl.from("#s6-cap span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "back.out(1.6)" }, 34.3);
+
+      // === S7 (39.5–43.5) 分类图谱 ===
+      tl.fromTo("#s7-cam", { scale: 1.0, transformOrigin: "55% 50%" }, { scale: 1.05, duration: 4, ease: "none" }, 39.5);
+      tl.to("#s7-c", { scaleX: 0, transformOrigin: "right center", duration: 1.5, ease: "power2.inOut" }, 39.8);
+      tl.from("#s7-ring", { scale: 1.3, autoAlpha: 0, duration: 0.5, ease: "back.out(1.8)" }, 41.3);
+      tl.to("#s7-ring", { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 41.8);
+      tl.from("#s7-cap span", { y: 24, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 39.7);
+
+      // === S8 (43.5–47.5) 片尾 ===
+      tl.from("#s8-icon", { scale: 0.6, autoAlpha: 0, duration: 0.6, ease: "back.out(1.7)" }, 43.6);
+      tl.from("#s8-word .char", { y: 50, autoAlpha: 0, duration: 0.45, ease: "power3.out", stagger: { each: 0.08, from: "start" } }, 43.9);
+      tl.from("#s8-tag", { y: 20, autoAlpha: 0, duration: 0.6, ease: "expo.out" }, 44.5);
+      tl.from("#s8-meta", { autoAlpha: 0, duration: 0.6, ease: "sine.inOut" }, 45.0);
+      tl.to("#s8-icon", { y: -8, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 44.8);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

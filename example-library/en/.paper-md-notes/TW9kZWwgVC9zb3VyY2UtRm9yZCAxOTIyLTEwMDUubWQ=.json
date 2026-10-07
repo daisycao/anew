@@ -1,0 +1,105 @@
+[
+  {
+    "id": "ford-1",
+    "tz": "local",
+    "created": "2026-10-05 08:42",
+    "quote": "Any customer can have a car painted any colour that he wants so long as it is black.",
+    "note": "He cut the menu to one dish. Sales hated it. Is this the real start of everything, before the line?",
+    "done": true,
+    "resolved": "Improved the note: section 1"
+  },
+  {
+    "id": "ford-2",
+    "tz": "local",
+    "created": "2026-10-05 08:47",
+    "quote": "If Ford does that he will be out of business in six months.",
+    "note": "Love this. But who said it? \"The general comment\" is vague.",
+    "replies": [
+      {
+        "by": "claude",
+        "at": "2026-10-05 12:31",
+        "text": "Ford doesn't name anyone; it's his own summary of the reaction, written 13 years later. Good colour, weak evidence, so I left it out of the note's body and only used it in the In their shoes card."
+      }
+    ],
+    "done": true,
+    "resolved": "Answered in the margin"
+  },
+  {
+    "id": "ford-3",
+    "tz": "local",
+    "created": "2026-10-05 09:05",
+    "quote": "The first step forward in assembly came when we began taking the work to the men instead of the men to the work.",
+    "note": "Isn't this just \"assembly line\"? Why does he make it sound like a philosophy?",
+    "done": true,
+    "resolved": "Improved the note: section 3"
+  },
+  {
+    "id": "ford-4",
+    "tz": "local",
+    "created": "2026-10-05 09:11",
+    "quote": "every second necessary but not a single unnecessary second",
+    "note": "Creepy and brilliant at the same time.",
+    "done": true,
+    "resolved": "Improved the note: section 3 (the card on tuning the speed)"
+  },
+  {
+    "id": "ford-5",
+    "tz": "local",
+    "created": "2026-10-05 09:30",
+    "quote": "our prices are based on an estimate of what the largest possible number of people will want to pay, or can pay, for what we have to sell",
+    "note": "Price set by what people CAN pay, not by what it costs. From the table: price −62%, output ×42 between 1909 and 1917.",
+    "done": true,
+    "resolved": "Improved the note: section 2 (added the table)"
+  },
+  {
+    "id": "ford-6",
+    "tz": "local",
+    "created": "2026-10-05 09:34",
+    "quote": "Our policy is to reduce the price, extend the operations, and improve the article.",
+    "note": "Price FIRST. This is the opposite of how we price our app. Might be the whole answer to my question.",
+    "done": true,
+    "resolved": "Improved the note: section 2, and the short answer at the top"
+  },
+  {
+    "id": "ford-7",
+    "tz": "local",
+    "created": "2026-10-05 09:38",
+    "quote": "no one knows what a cost ought to be",
+    "note": "If costs aren't fixed, cost-plus pricing is a guess dressed up as maths.",
+    "done": true,
+    "resolved": "Improved the note: section 2"
+  },
+  {
+    "id": "ford-8",
+    "tz": "local",
+    "created": "2026-10-06 21:02",
+    "quote": "it had been necessary to hire at the rate of about 53,000 a year in order to keep a constant force of 14,000",
+    "note": "Wait. 53,000 hires to keep 14,000 jobs?? Then the $5 day wasn't (just) PR. I need to change section 4.",
+    "done": true,
+    "resolved": "Improved the note: section 4 (rewrote it; v2 said PR stunt)"
+  },
+  {
+    "id": "ford-9",
+    "tz": "local",
+    "created": "2026-10-06 21:06",
+    "quote": "There was, however, no charity in any way involved.",
+    "note": "He says it himself: it's a business decision. \"A low wage business is always insecure.\"",
+    "done": true,
+    "resolved": "Improved the note: section 4"
+  },
+  {
+    "id": "ford-10",
+    "tz": "local",
+    "created": "2026-10-06 21:12",
+    "quote": "(1) Married men living with and taking good care of their families.",
+    "note": "So not everyone got $5. Who checked whether you \"take good care\" of your family?",
+    "follow": true
+  },
+  {
+    "id": "ford-11",
+    "tz": "local",
+    "created": "2026-10-07 09:20",
+    "quote": "for that reason we buy one of every new car that comes out",
+    "note": "Competitor teardowns in the 1910s. We've never once paid for a competitor's app and used it for a week. Should we?"
+  }
+]

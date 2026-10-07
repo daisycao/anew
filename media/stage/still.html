@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Anew still</title>
+<style>
+  /* 和 App 同一套颜色（native/style.css 0.2 那段）：靛青主色、冷白纸 */
+  :root{--ink:#1f2530;--moss:#34549a;--paper:#f1f3f6;--clay:#b0643f}
+  html,body{margin:0;width:1440px;height:810px;overflow:hidden;background:var(--paper)}
+  .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .shade{position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(transparent,rgba(31,37,48,.55))}
+  .cap{position:absolute;left:50%;bottom:54px;transform:translateX(-50%);padding:14px 30px;border-radius:14px;
+       background:rgba(31,37,48,.9);color:#fff;font:600 34px/1.25 "Iowan Old Style",Georgia,serif;letter-spacing:.2px;white-space:nowrap;
+       box-shadow:0 10px 40px rgba(0,0,0,.25)}
+  .badge{position:absolute;top:150px;right:330px;padding:8px 16px;border-radius:999px;background:var(--moss);color:#fff;
+         font:600 20px/1 -apple-system,system-ui,sans-serif;box-shadow:0 6px 20px rgba(52,84,154,.35)}
+  .badge s{opacity:.6;margin-right:6px}
+  .ring{position:absolute;border:3px solid var(--clay);border-radius:14px;box-shadow:0 0 0 6px rgba(176,100,63,.15)}
+  .tc{position:absolute;top:16px;left:18px;font:500 13px/1 ui-monospace,Menlo,monospace;color:rgba(31,37,48,.45)}
+</style></head>
+<body>
+<img class="shot" id="shot"><div class="shade"></div>
+<div class="cap" id="cap"></div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.querySelector('#shot').src = q.get('img');
+  document.querySelector('#cap').textContent = q.get('cap');
+  if (q.get('badge')) { const b = document.createElement('div'); b.className = 'badge'; b.innerHTML = q.get('badge'); document.body.append(b); }
+  if (q.get('ring')) { const [x, y, w, h] = q.get('ring').split(',').map(Number); const r = document.createElement('div'); r.className = 'ring'; Object.assign(r.style, { left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' }); document.body.append(r); }
+  if (q.get('tc')) { const t = document.createElement('div'); t.className = 'tc'; t.textContent = q.get('tc'); document.body.append(t); }
+</script>
+</body></html>

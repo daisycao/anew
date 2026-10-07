@@ -1,0 +1,20 @@
+[
+  {
+    "id": "franklin-1",
+    "tz": "local",
+    "created": "2026-10-05 07:52",
+    "quote": "he has really spent, or rather thrown away, five shillings besides",
+    "note": "这就是机会成本吧？但现在很多人拿月薪，闲半天并不会少拿钱。",
+    "done": true,
+    "resolved": "已改进正文：第 1 块"
+  },
+  {
+    "id": "franklin-2",
+    "tz": "local",
+    "created": "2026-10-05 07:58",
+    "quote": "Money can beget money, and its offspring can beget more",
+    "note": "这是在说复利吗？富兰克林自己有没有用过复利的例子？",
+    "done": true,
+    "resolved": "已改进正文：第 2 块"
+  }
+]

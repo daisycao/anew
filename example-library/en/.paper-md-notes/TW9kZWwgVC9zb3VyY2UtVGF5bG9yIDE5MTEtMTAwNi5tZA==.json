@@ -1,0 +1,52 @@
+[
+  {
+    "id": "taylor-1",
+    "tz": "local",
+    "created": "2026-10-06 20:30",
+    "quote": "In the past the man has been first; in the future the system must be first.",
+    "note": "This one sentence is the 20th-century factory.",
+    "done": true,
+    "resolved": "Improved the note: section 5"
+  },
+  {
+    "id": "taylor-2",
+    "tz": "local",
+    "created": "2026-10-06 20:38",
+    "quote": "47 tons per man per day, in place of 12 and a half tons",
+    "note": "×3.8 the output for +61% pay. Who keeps the difference?",
+    "replies": [
+      {
+        "by": "claude",
+        "at": "2026-10-06 22:15",
+        "text": "Taylor's own figure is \"60 per cent. higher wages\", so your maths is right. His answer is that the gain is shared between workman, company and buyers; he doesn't give a split. Also: this story is Taylor's retelling, and historians (Wrege and Perroni, 1974) have argued it was tidied up. I put that caution in section 5."
+      }
+    ],
+    "done": true,
+    "resolved": "Answered in the margin; Improved the note: comparison table"
+  },
+  {
+    "id": "taylor-3",
+    "tz": "local",
+    "created": "2026-10-06 20:44",
+    "quote": "Now pick up a pig and walk. Now sit down and rest.",
+    "note": "Ford doesn't need this man with a watch. The line IS the watch.",
+    "done": true,
+    "resolved": "Improved the note: section 5 and the comparison table"
+  },
+  {
+    "id": "taylor-4",
+    "tz": "local",
+    "created": "2026-10-06 20:51",
+    "quote": "Did I vant $1.85 a day?",
+    "note": "Writing his accent out like this tells you how Taylor saw the workers.",
+    "replies": [
+      {
+        "by": "claude",
+        "at": "2026-10-06 22:15",
+        "text": "Fair reading. It was also used against him at the time: the 1911–12 House committee hearings on the Taylor system were partly about how workers were treated. I didn't add this to the note; say if you want it there."
+      }
+    ],
+    "done": true,
+    "resolved": "Answered in the margin"
+  }
+]

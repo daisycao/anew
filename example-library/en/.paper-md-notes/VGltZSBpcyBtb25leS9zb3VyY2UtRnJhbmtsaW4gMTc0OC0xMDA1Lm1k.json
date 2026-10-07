@@ -1,0 +1,20 @@
+[
+  {
+    "id": "franklin-1",
+    "tz": "local",
+    "created": "2026-10-05 07:52",
+    "quote": "he has really spent, or rather thrown away, five shillings besides",
+    "note": "Isn't this just opportunity cost? Most of us are salaried now. Idling half a day costs us nothing.",
+    "done": true,
+    "resolved": "Improved the note: section 1"
+  },
+  {
+    "id": "franklin-2",
+    "tz": "local",
+    "created": "2026-10-05 07:58",
+    "quote": "Money can beget money, and its offspring can beget more",
+    "note": "Compound interest? Did Franklin ever use a compounding example himself?",
+    "done": true,
+    "resolved": "Improved the note: section 2"
+  }
+]

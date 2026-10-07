@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>知新 Anew</title>
+  <link rel="stylesheet" href="../../native/style.css">
+</head>
+<body>
+  <!-- 这一条被原生 WindowDragStrip 盖着，只能放不可点的东西 -->
+  <div class="titlebar">
+    <div id="document-name" class="document-name">知新 Anew</div>
+  </div>
+
+  <header class="toolbar">
+    <button id="open-folder" class="brand" title="打开别的库文件夹"><span class="brand-mark">新</span><span>知新 Anew</span><span class="brand-version">0.8.2</span></button>
+    <div class="appearance-controls">
+      <button id="edit" class="chip edit-button" title="编辑 Markdown（⌘E）">编辑</button>
+      <button id="save" class="chip save-button" title="保存（⌘S）" disabled>保存</button>
+      <button id="hand-ai" class="chip hand-ai" title="选一句话复制，贴进你的 AI（如 Claude Code）：处理回响、收网页回响、重整一遍">交给 AI ▾</button>
+      <button id="retell" class="chip retell" title="学完了，用语音把这件事讲一遍，AI 会指出哪里没讲清、讲错了">讲一遍</button>
+      <button id="insert-image" class="chip" title="插入图片" hidden>插入图片</button>
+      <input id="image-input" type="file" accept="image/*" multiple hidden>
+      <button id="copy-model" class="chip" title="把正文和回响一起复制（⇧⌘C）" hidden>复制给模型</button>
+      <button id="timeline" class="chip timeline-button" title="学习时间轴：这几天读了哪几篇、各多久">◷ 时间轴</button>
+      <button id="graph" class="chip timeline-button" title="图谱：这个主题改了几版、观点怎么变的；这一类学到的东西流到了哪">◎ 图谱</button>
+      <button id="panyipan" class="chip timeline-button panyipan-button" title="盘一盘：拿你最近 3 天在想的，去翻很早以前的想法和存过的东西（相关 / 惊喜 / 随机）">◐ 盘一盘</button>
+      <button id="refresh" class="icon-button refresh-button" title="重新读取磁盘上的最新内容（⌘R）">⟳</button>
+      <span class="control-divider"></span>
+      <button id="small" class="icon-button" title="缩小文字">A<span class="sup">−</span></button>
+      <button id="large" class="icon-button" title="放大文字">A<span class="sup">+</span></button>
+      <button id="typeset" class="icon-button" title="排版" hidden>笔</button>
+      <button id="theme" class="icon-button" title="切换主题">☾</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="library" aria-label="书库">
+      <div class="library-top">
+        <button id="back-to-shelf" class="shelf-back" title="回到书架" hidden>‹</button>
+        <span id="book-thumb" class="book-thumb" hidden></span>
+        <h2 id="library-title">库</h2>
+        <button id="open-file" class="plus-button" title="打开单个文件">＋</button>
+      </div>
+
+      <section id="shelf" class="shelf" hidden>
+        <div class="section-label">书架</div>
+        <div id="shelf-list" class="shelf-list"></div>
+        <button id="shelf-add" class="library-button">＋ 把一个文件夹加进书架</button>
+      </section>
+      <div class="library-actions">
+        <button id="choose-folder" class="library-button">打开书库文件夹</button>
+        <button id="choose-file" class="library-text-button">或打开单个文件</button>
+      </div>
+      <section id="recent-libraries" class="recent-libraries" hidden>
+        <div class="section-label">最近打开</div>
+        <div id="recent-list" class="recent-list"></div>
+      </section>
+      <div id="search-wrap" class="search-wrap" hidden><span class="search-icon">⌕</span><input id="library-search" type="search" placeholder="搜索书库"></div>
+      <nav id="views" class="views" aria-label="视图"></nav>
+      <nav id="file-tree" class="file-tree" aria-label="文件夹内容"></nav>
+      <section id="tag-section" class="tag-section" hidden><div class="section-label">标签</div><div id="tag-list" class="tag-list"></div></section>
+      <div id="library-footer" class="library-footer">一份真相，两种读法</div>
+    </aside>
+
+    <section class="reading-area">
+      <section id="bookshelf-view" class="bookshelf-view" hidden></section>
+      <div id="book-meta" class="book-meta" hidden><span id="crumb"></span><span id="word-count"></span></div>
+      <div id="editor-panel" class="editor-panel">
+        <div class="editor-caption"><span>原稿 · Markdown</span><span id="save-state" aria-live="polite"></span></div>
+        <textarea id="editor" spellcheck="false" aria-label="Markdown 编辑器"></textarea>
+      </div>
+      <article id="content" class="content empty-state">
+        <div class="welcome-mark">新</div>
+        <h1>温故而知新。</h1>
+        <p>一个念头引来一批来源；在来源上划线、写回响，和 AI 辩，理成自己的笔记。</p>
+        <div class="welcome-actions"><button id="choose-folder-main" class="primary-button">打开书库文件夹</button><button id="choose-file-main" class="secondary-button">打开单个文件</button></div>
+      </article>
+    </section>
+
+    <aside class="inspector" aria-label="文档信息">
+      <div id="inspector-title" class="inspector-title">知新 Anew</div>
+      <section id="document-tags-section" hidden><div id="document-tags" class="document-tags"></div></section>
+      <dl id="document-info" class="document-info" hidden></dl>
+      <section id="links-section" hidden><div class="inspector-label">本页链接</div><div id="page-links" class="page-links"></div></section>
+      <section id="comment-box" class="comment-box">
+        <div class="retell-head"><span>讲一遍：给没听过的人讲讲它是怎么回事</span><button id="retell-cancel" class="retell-cancel">不讲了</button></div>
+        <textarea id="comment-input" aria-label="读后感" rows="2" placeholder="整篇读下来想说的……"></textarea>
+        <div class="comment-foot"><span class="comment-keys">⌘↩ 存</span><button id="comment-add" class="comment-add">存</button></div>
+      </section>
+      <section id="notes-section" hidden><div id="notes-count" class="inspector-label">划线和读后感</div><div id="notes-list" class="notes-list"></div><div id="notes-done-wrap" hidden><button id="notes-done-toggle" class="notes-done-toggle"><span class="notes-done-caret">▸</span>已处理 · <span id="notes-done-count">0</span> 条</button><div id="notes-done-list" class="notes-list notes-done-list" hidden></div></div></section>
+      <section id="logs-section" hidden><div class="inspector-label">修改记录</div><div id="change-logs" class="change-logs"></div></section>
+      <div class="inspector-tip">选中一段划线 · 点「交给 AI」</div>
+    </aside>
+  </main>
+  <div id="read-progress" class="read-progress" hidden title="点一下跳到那里"><div class="read-progress-fill"></div><span class="read-progress-label"></span></div>
+  <button id="note-hint" class="note-hint" hidden>＋ 划线</button>
+
+  <div id="note-popover" class="note-popover" hidden>
+    <div class="note-popover-quote" id="note-quote"></div>
+    <textarea id="note-input" aria-label="划线说一句" rows="4" placeholder="写点什么……⌘↩ 保存，Esc 取消"></textarea>
+    <div class="note-popover-actions">
+      <span class="note-keys">⌘↩ 保存 · Esc 取消</span>
+      <button id="note-cancel" class="secondary-button">取消</button>
+      <button id="note-save" class="primary-button">存</button>
+    </div>
+  </div>
+
+  <div id="app-notice" role="status" aria-live="polite" hidden></div>
+  <script src="data.js"></script><script src="bridge.js"></script><script src="../../native/i18n.js"></script>
+  <script src="../../native/app.js"></script>
+</body>
+</html>

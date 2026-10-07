@@ -1,0 +1,26 @@
+{
+  "appName": {
+    "message": "知新 Anew · 划线回响"
+  },
+  "appDesc": {
+    "message": "在网页上划线、写回响，一键存进 Anew 的库，成一篇来源。"
+  },
+  "actionTitle": {
+    "message": "知新 Anew：打开 / 收起回响栏"
+  },
+  "cmdToggle": {
+    "message": "打开 / 收起回响栏"
+  },
+  "cmdNote": {
+    "message": "给选中的这段写回响"
+  },
+  "menuNote": {
+    "message": "给这段写回响（Anew）"
+  },
+  "menuMark": {
+    "message": "划线（Anew）"
+  },
+  "noReply": {
+    "message": "本机那头没回话"
+  }
+}

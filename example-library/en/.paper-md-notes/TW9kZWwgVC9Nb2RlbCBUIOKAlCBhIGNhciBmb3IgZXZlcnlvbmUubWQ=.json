@@ -1,0 +1,38 @@
+[
+  {
+    "id": "note-1",
+    "tz": "local",
+    "created": "2026-10-07 08:31",
+    "quote": "",
+    "note": "Retell: OK, so, the Model T. I started thinking it was the assembly line that made it cheap. But really the order is: Ford decides the price first, a car a family can afford. Then one model, so you can build one line. Then the line, which makes the work so boring that everyone quits, so then the five dollars to keep them. Everything follows from the price. And for us, honestly, we did it the other way round with our pricing, we added up costs, and ended up at a price nobody wants.",
+    "kind": "讲一遍",
+    "done": true,
+    "resolved": "Improved the note: short answer at the top, sections 4 and 6"
+  },
+  {
+    "id": "note-2",
+    "tz": "local",
+    "created": "2026-10-07 08:44",
+    "quote": "Do you back him, or argue for a range?",
+    "note": "I'd argue for two models: a cheap one for volume, a nicer one for margin. One car for everyone sounds like ignoring the customer.",
+    "done": true,
+    "resolved": "Improved the note: In their shoes (added what happened)"
+  },
+  {
+    "id": "note-3",
+    "tz": "local",
+    "created": "2026-10-07 09:02",
+    "quote": "Read the quote as Ford looking back in 1922, not a record of 1909.",
+    "note": "Good catch. Keep this. I'd have quoted it as a 1909 fact.",
+    "done": true,
+    "resolved": "Kept"
+  },
+  {
+    "id": "note-4",
+    "tz": "local",
+    "created": "2026-10-07 21:15",
+    "quote": "So you weren't wrong, just about fifteen years early.",
+    "note": "So: one model wins while the market is new, choice wins once everyone already has one. Is that a known pattern? Find me a source, and tell me what it means for Our pricing.",
+    "follow": true
+  }
+]

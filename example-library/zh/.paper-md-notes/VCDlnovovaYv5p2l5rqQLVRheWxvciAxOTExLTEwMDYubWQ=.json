@@ -1,0 +1,52 @@
+[
+  {
+    "id": "taylor-1",
+    "tz": "local",
+    "created": "2026-10-06 20:30",
+    "quote": "In the past the man has been first; in the future the system must be first.",
+    "note": "这一句就是整个 20 世纪的工厂。",
+    "done": true,
+    "resolved": "已改进正文：第 5 块"
+  },
+  {
+    "id": "taylor-2",
+    "tz": "local",
+    "created": "2026-10-06 20:38",
+    "quote": "47 tons per man per day, in place of 12 and a half tons",
+    "note": "产量 ×3.8，工资 +61%。差额谁拿了？",
+    "replies": [
+      {
+        "by": "claude",
+        "at": "2026-10-06 22:15",
+        "text": "泰勒自己写的是「高 60%」，你算得对。他的回答是好处由工人、公司和买家分享，但没给比例。另外，这个故事是泰勒自己转述的，史学研究（Wrege 和 Perroni，1974）认为他修饰过。这层提醒我写进了第 5 块。"
+      }
+    ],
+    "done": true,
+    "resolved": "在批注里回了；已改进正文：对照表"
+  },
+  {
+    "id": "taylor-3",
+    "tz": "local",
+    "created": "2026-10-06 20:44",
+    "quote": "Now pick up a pig and walk. Now sit down and rest.",
+    "note": "福特不需要这个拿表的人。流水线「就是」那块表。",
+    "done": true,
+    "resolved": "已改进正文：第 5 块和对照表"
+  },
+  {
+    "id": "taylor-4",
+    "tz": "local",
+    "created": "2026-10-06 20:51",
+    "quote": "Did I vant $1.85 a day?",
+    "note": "把他的口音这样写出来，能看出泰勒怎么看工人。",
+    "replies": [
+      {
+        "by": "claude",
+        "at": "2026-10-06 22:15",
+        "text": "这个读法有道理。当时也有人拿这点批评他：1911–12 年美国众议院专门开听证会调查「泰勒制」，其中一部分就是工人受到的对待。我没写进笔记，要的话说一声。"
+      }
+    ],
+    "done": true,
+    "resolved": "在批注里回了"
+  }
+]

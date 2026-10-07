@@ -1,0 +1,15 @@
+/* 页面上的划线（插件自己的界面在 shadow DOM 里，样式见 content.js） */
+mark.anew-hl {
+  background: linear-gradient(transparent 58%, rgba(176, 118, 66, .32) 58%) !important;
+  color: inherit !important;
+  border-radius: 2px;
+  padding: 0 !important;
+  cursor: pointer;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+mark.anew-hl.anew-has-note { background: linear-gradient(transparent 58%, rgba(176, 118, 66, .32) 58%) !important; border-bottom: 1.5px solid #a9684d; }
+mark.anew-hl.anew-follow { border-bottom-style: dashed; }
+mark.anew-hl.anew-active { background: rgba(176, 118, 66, .34) !important; }
+mark.anew-hl.anew-flash { animation: anew-flash 1.2s ease-out; }
+@keyframes anew-flash { 0%, 40% { background: rgba(78, 106, 83, .3); } 100% { background: rgba(176, 118, 66, .2); } }

@@ -1,0 +1,26 @@
+{
+  "appName": {
+    "message": "Anew · Web Highlights"
+  },
+  "appDesc": {
+    "message": "Highlight and annotate web pages; they are saved into your Anew library as sources."
+  },
+  "actionTitle": {
+    "message": "Anew: toggle the side panel"
+  },
+  "cmdToggle": {
+    "message": "Toggle the side panel"
+  },
+  "cmdNote": {
+    "message": "Add a note to the selection"
+  },
+  "menuNote": {
+    "message": "Add a note (Anew)"
+  },
+  "menuMark": {
+    "message": "Highlight (Anew)"
+  },
+  "noReply": {
+    "message": "The native host did not respond"
+  }
+}

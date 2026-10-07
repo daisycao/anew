@@ -1,0 +1,105 @@
+[
+  {
+    "id": "ford-1",
+    "tz": "local",
+    "created": "2026-10-05 08:42",
+    "quote": "Any customer can have a car painted any colour that he wants so long as it is black.",
+    "note": "菜单砍成一道菜，销售全反对。这才是一切的起点吧，比流水线还早？",
+    "done": true,
+    "resolved": "已改进正文：第 1 块"
+  },
+  {
+    "id": "ford-2",
+    "tz": "local",
+    "created": "2026-10-05 08:47",
+    "quote": "If Ford does that he will be out of business in six months.",
+    "note": "喜欢这句。但是谁说的？「普遍的说法」太含糊了。",
+    "replies": [
+      {
+        "by": "claude",
+        "at": "2026-10-05 12:31",
+        "text": "福特没点名，这是他自己对当时反应的概括，而且是 13 年后写的。有画面感，但不算证据，所以我没放进笔记正文，只用在了「换位」那张卡里。"
+      }
+    ],
+    "done": true,
+    "resolved": "在批注里回了"
+  },
+  {
+    "id": "ford-3",
+    "tz": "local",
+    "created": "2026-10-05 09:05",
+    "quote": "The first step forward in assembly came when we began taking the work to the men instead of the men to the work.",
+    "note": "这不就是「流水线」吗？为什么说得像一种哲学？",
+    "done": true,
+    "resolved": "已改进正文：第 3 块"
+  },
+  {
+    "id": "ford-4",
+    "tz": "local",
+    "created": "2026-10-05 09:11",
+    "quote": "every second necessary but not a single unnecessary second",
+    "note": "又吓人又厉害。",
+    "done": true,
+    "resolved": "已改进正文：第 3 块（调速度那张卡）"
+  },
+  {
+    "id": "ford-5",
+    "tz": "local",
+    "created": "2026-10-05 09:30",
+    "quote": "our prices are based on an estimate of what the largest possible number of people will want to pay, or can pay, for what we have to sell",
+    "note": "价格按大家「付得起」多少定，不按成本定。从表里算：1909 到 1917 年，价格 −62%，产量 ×42。",
+    "done": true,
+    "resolved": "已改进正文：第 2 块（加了表）"
+  },
+  {
+    "id": "ford-6",
+    "tz": "local",
+    "created": "2026-10-05 09:34",
+    "quote": "Our policy is to reduce the price, extend the operations, and improve the article.",
+    "note": "价格在「前面」。和我们给 App 定价的顺序正好相反。可能这就是我这个问题的答案。",
+    "done": true,
+    "resolved": "已改进正文：第 2 块，和顶上的简短回答"
+  },
+  {
+    "id": "ford-7",
+    "tz": "local",
+    "created": "2026-10-05 09:38",
+    "quote": "no one knows what a cost ought to be",
+    "note": "成本要不是固定的，成本加成定价就是穿着数学外衣的猜测。",
+    "done": true,
+    "resolved": "已改进正文：第 2 块"
+  },
+  {
+    "id": "ford-8",
+    "tz": "local",
+    "created": "2026-10-06 21:02",
+    "quote": "it had been necessary to hire at the rate of about 53,000 a year in order to keep a constant force of 14,000",
+    "note": "等等。为了 14,000 个岗位一年招 53,000 人？？那 5 美元日薪就不（只）是作秀了。第 4 块得改。",
+    "done": true,
+    "resolved": "已改进正文：第 4 块（重写了；第 2 版写的是作秀）"
+  },
+  {
+    "id": "ford-9",
+    "tz": "local",
+    "created": "2026-10-06 21:06",
+    "quote": "There was, however, no charity in any way involved.",
+    "note": "他自己说了：这是生意上的决定。「低工资的生意总是不稳的。」",
+    "done": true,
+    "resolved": "已改进正文：第 4 块"
+  },
+  {
+    "id": "ford-10",
+    "tz": "local",
+    "created": "2026-10-06 21:12",
+    "quote": "(1) Married men living with and taking good care of their families.",
+    "note": "所以不是人人都拿 5 美元。谁来检查你有没有「好好照顾家庭」？",
+    "follow": true
+  },
+  {
+    "id": "ford-11",
+    "tz": "local",
+    "created": "2026-10-07 09:20",
+    "quote": "for that reason we buy one of every new car that comes out",
+    "note": "1910 年代就在拆竞品了。我们从来没花钱买过竞品、认真用一周。要不要做？"
+  }
+]
