@@ -179,7 +179,19 @@ How well it goes depends on the model: the rules ask it to fact-check you, keep 
 
 ## Install
 
-You'll need macOS 13+, Xcode Command Line Tools (`xcode-select --install`), and an AI agent that can read and write files: [Claude Code](https://claude.com/claude-code) by default, with any model (see [Use any AI](#use-any-ai)). Node.js only for the Chrome extension.
+You'll need macOS 13 or later (Apple silicon or Intel) and an AI agent that can read and write files: [Claude Code](https://claude.com/claude-code) by default, with any model (see [Use any AI](#use-any-ai)).
+
+**1. Download the app.** Get **[Anew-0.8.2.dmg](https://github.com/daisycao/anew/releases/latest)** from Releases, open it, and drag **Anew** into Applications.
+
+The app isn't signed with an Apple developer certificate yet, so the first time macOS will say it can't verify the developer. Click **Done**, then go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway**. You only do this once. (Or run `xattr -dr com.apple.quarantine "/Applications/知新 Anew.app"` in Terminal.)
+
+**2. Teach your AI how to work with your library** (for Claude Code; for other agents see [Use any AI](#use-any-ai)):
+
+```bash
+mkdir -p ~/.claude/skills/anew && curl -fsSL https://raw.githubusercontent.com/daisycao/anew/main/skill/anew/SKILL.md -o ~/.claude/skills/anew/SKILL.md
+```
+
+**Build from source instead** (needs Xcode Command Line Tools, `xcode-select --install`):
 
 ```bash
 git clone https://github.com/daisycao/anew.git
@@ -188,13 +200,7 @@ zsh native/build-app.sh
 open "outputs/知新 Anew.app"
 ```
 
-Teach the AI how to work with your library (for Claude Code):
-
-```bash
-mkdir -p ~/.claude/skills && cp -R skill/anew ~/.claude/skills/
-```
-
-Optional, the Chrome extension:
+**Optional, the Chrome extension** (needs the cloned repo and Node.js):
 
 1. Double-click `chrome/install-extension.command` (registers the native host that writes into your library).
 2. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked**, pick the `chrome/` folder.
@@ -231,7 +237,7 @@ Notes carry Obsidian-compatible YAML properties (`type`, `stage`, `sources`, `ve
 
 A personal tool, used daily since September 2026, now shared. Honest caveats:
 
-- **Mac only.** Not signed or notarized: build it yourself (above), or right-click → Open the first time.
+- **Mac only.** Not signed with an Apple developer certificate or notarized yet: the first open needs **Open Anyway** (see [Install](#install)).
 - **English and Chinese.** The app, extension and example library follow your system language; the skill writes in your library's language.
 - **Timeline reading time** (how long you spent on each document) comes from a separate time tracker of mine and isn't included; without it the timeline shows annotations and replies only.
 - Built on an earlier reader of mine, Paper MD, so you'll see `paper-md` in a few file names.

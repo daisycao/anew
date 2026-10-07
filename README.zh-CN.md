@@ -176,7 +176,19 @@ claude
 
 ## 安装
 
-需要 macOS 13 以上、Xcode 命令行工具（`xcode-select --install`）和一个能读写文件的 AI 助手：默认 [Claude Code](https://claude.com/claude-code)，模型随你换（见[哪家 AI 都能用](#哪家-ai-都能用)）。Chrome 插件另外要 Node.js。
+需要 macOS 13 以上（Apple 芯片和 Intel 都行），和一个能读写文件的 AI 助手：默认 [Claude Code](https://claude.com/claude-code)，模型随你换（见[哪家 AI 都能用](#哪家-ai-都能用)）。
+
+**1. 下载 App。** 到 Releases 下载 **[Anew-0.8.2.dmg](https://github.com/daisycao/anew/releases/latest)**，打开，把「知新 Anew」拖进「应用程序」。
+
+App 还没有用苹果开发者证书签名，第一次打开时 macOS 会说「无法验证开发者」。点「完成」，然后去 **系统设置 → 隐私与安全性**，往下拉，点 **仍要打开**。只需要做一次。（也可以在终端里跑 `xattr -dr com.apple.quarantine "/Applications/知新 Anew.app"`。）
+
+**2. 让 AI 学会怎么用你的库**（Claude Code 的装法；别的助手见[哪家 AI 都能用](#哪家-ai-都能用)）：
+
+```bash
+mkdir -p ~/.claude/skills/anew && curl -fsSL https://raw.githubusercontent.com/daisycao/anew/main/skill/anew/SKILL.md -o ~/.claude/skills/anew/SKILL.md
+```
+
+**想自己从源码编译**（需要 Xcode 命令行工具，`xcode-select --install`）：
 
 ```bash
 git clone https://github.com/daisycao/anew.git
@@ -185,13 +197,7 @@ zsh native/build-app.sh
 open "outputs/知新 Anew.app"
 ```
 
-让 AI 学会怎么用你的库（Claude Code 的装法）：
-
-```bash
-mkdir -p ~/.claude/skills && cp -R skill/anew ~/.claude/skills/
-```
-
-可选，Chrome 插件：
+**可选，Chrome 插件**（需要先 clone 仓库，并装好 Node.js）：
 
 1. 双击 `chrome/install-extension.command`（注册往你库里写文件的 native host）。
 2. 打开 `chrome://extensions`，打开**开发者模式**，点**加载已解压的扩展程序**，选 `chrome/` 文件夹。
@@ -228,7 +234,7 @@ Anew Notes/
 
 自己每天在用的工具，从 2026 年 9 月用到现在，拿出来分享。老实说几点：
 
-- **只有 Mac。** 没签名、没公证：自己编译（见上），或者第一次打开时右键 → 打开。
+- **只有 Mac。** 还没用苹果开发者证书签名、没公证：第一次打开要点「仍要打开」（见[安装](#安装)）。
 - **中英双语。** App、插件、示例库跟系统语言走；skill 按你库的语言写。
 - **时间轴里的阅读时长**（每篇读了多久）来自我另一个记时间的工具，没有包含在这里；没有它，时间轴只画批注和回复。
 - 前身是我之前做的阅读器 Paper MD，所以有几个文件名里还带着 `paper-md`。

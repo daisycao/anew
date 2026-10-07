@@ -6,7 +6,13 @@ APP_DIR="$ROOT_DIR/outputs/知新 Anew.app"
 CONTENTS="$APP_DIR/Contents"
 
 mkdir -p "$CONTENTS/MacOS" "$CONTENTS/Resources"
-xcrun swiftc "$ROOT_DIR/native/AppDelegate.swift" -o "$CONTENTS/MacOS/Anew" -framework Cocoa -framework WebKit
+# 通用版：Apple 芯片和 Intel 的 Mac 都能跑，最低 macOS 13
+BIN_TMP="$(mktemp -d)"
+for arch in arm64 x86_64; do
+  xcrun swiftc "$ROOT_DIR/native/AppDelegate.swift" -target "$arch-apple-macos13.0" -O -o "$BIN_TMP/Anew-$arch" -framework Cocoa -framework WebKit
+done
+lipo -create "$BIN_TMP/Anew-arm64" "$BIN_TMP/Anew-x86_64" -output "$CONTENTS/MacOS/Anew"
+rm -rf "$BIN_TMP"
 cp "$ROOT_DIR/native/Info.plist" "$CONTENTS/Info.plist"
 # App 名按系统语言：英文「Anew」，中文「知新 Anew」（菜单栏、Dock、关于、访达）
 rm -rf "$CONTENTS/Resources/en.lproj" "$CONTENTS/Resources/zh-Hans.lproj"
