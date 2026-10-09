@@ -1772,11 +1772,11 @@ document.addEventListener('click', event => {
 // （Paper MD 按「卷几」排序，没编号的都算附件、变灰，Anew 里全是灰的，看不清）
 const STAGE_RANK = { working: 0, idea: 1, workout: 2, archive: 4 };
 docOrder = doc => { const m = metaOf(doc); return [0, STAGE_RANK[m.stage] ?? 3, titleFor(doc)]; };
-// 标题前面那个记号：学习中 = 绿点，理好了 = 勾，来源不用点、写一个「来源」小标签
+// 标题前面那个记号：理好了 = 勾，来源写一个「来源」小标签；学习中、念头不标（分组标题已经说了阶段）
 function stageMark(m) {
   if (m.type === '来源') return `<span class="src-tag">${typeLabel('来源')}</span>`;
   if (m.stage === 'workout') return '<span class="stage-check">✓</span>';
-  return `<span class="stage-dot stage-${escapeHTML(m.stage || 'none')}"></span>`;
+  return '';
 }
 // 左边显示正文的 # 标题（来源的文件名是「来源-2013BP-0927」这种，看不出是什么）；没有标题才用文件名。文件名在悬停提示里
 function plainHeading(text) { return String(text || '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`~]|\[\[|\]\]/g, '').trim(); }
