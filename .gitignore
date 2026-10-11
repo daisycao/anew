@@ -5,3 +5,17 @@ outputs/
 .claude/
 media/宣传视频计划.md
 release/
+media/宣发计划-v2.md
+media/品牌-prompt.md
+media/readme/画图 prompt.md
+media/readme/hero-generation-prompt.txt
+# 本地素材（清理后的在 media/brand、media/readme）
+anew-logo-6b/
+/pic*.png
+/onesheet.png
+/hero-*.png
+media/readme/hero-bookworm-*.png
+media/readme/mascot-board-*
+media/readme/*-prompt.txt
+media/readme/*-yellow-*.png
+!native/Anew.iconset/

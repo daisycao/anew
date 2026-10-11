@@ -82,7 +82,8 @@ body::before{
   padding:5px 8px;border-radius:var(--radius-sm);
 }
 .brand:hover{background:var(--moss-pale)}
-.brand-mark{font-family:var(--sans);font-size:15px;line-height:1;opacity:.75}
+.brand-mark{display:inline-flex;line-height:1}
+.brand-mark .anew-mark{width:15px;height:16px}
 
 .appearance-controls{display:flex;align-items:center;gap:4px}
 .control-divider{width:1px;height:16px;margin:0 5px;background:var(--line)}
@@ -282,7 +283,8 @@ body::before{
 
 /* 空状态 */
 .empty-state{max-width:520px;padding:110px 0;text-align:center;font-family:var(--sans)}
-.welcome-mark{color:color-mix(in srgb,var(--moss) 55%,transparent);font-size:40px;line-height:1;margin-bottom:22px}
+.welcome-mark{color:var(--moss);line-height:1;margin-bottom:24px}
+.welcome-mark .anew-mark{width:52px;height:56px}
 .empty-state h1{font-family:var(--serif);font-size:30px;font-weight:700;letter-spacing:-.01em;margin:0 0 14px}
 .empty-state p{color:var(--muted);font-size:14.5px;line-height:1.85;margin:0}
 .welcome-actions{display:flex;justify-content:center;gap:9px;margin-top:30px}
@@ -794,8 +796,7 @@ details:not([open])>.tree-folder-archive .tree-icon{transform:rotate(-90deg)}
 
 /* ══════════ 知新 Anew 0.1 ══════════ */
 .anew #shelf,.anew #bookshelf-view,.anew #back-to-shelf,.anew #book-thumb,.anew .recent-docs{display:none!important}
-.anew .brand-mark{font-family:var(--serif);font-weight:700;color:var(--moss)}
-.anew .welcome-mark{font-family:var(--serif);font-weight:700}
+.anew .brand-mark{color:var(--moss)}
 .hand-ai{color:var(--moss);font-weight:600}
 
 /* 左边的视图 */

@@ -1,18 +1,18 @@
 <a name="english"></a>
 <p align="center"><b>English</b> · <a href="#zh">简体中文</a></p>
 
+<p align="center"><img src="media/readme/hero.jpg" alt="Anew: a little bookworm writes in the margin of an open book while a butterfly flies off a reply card"></p>
+
 <div align="center">
-
-<img src="media/readme/ai-en.png" width="720" alt="Works with Claude, ChatGPT, Gemini, DeepSeek, Kimi, Qwen, GLM, MiniMax and Doubao">
-
-# Anew 知新
 
 ### Read with AI in the margins.
 
 **You highlight and argue with the text. The AI fact-checks you and rewrites your notes, right in the files.**
 **No chat log to scroll back through. Just a note that gets better every time you read.**
 
-macOS · any AI agent that can edit files (Claude Code by default; [DeepSeek, Kimi, Qwen… work too](#use-any-ai)) · plain Markdown · MIT
+[**Download Anew for Mac**](https://github.com/daisycao/anew/releases/latest) · macOS 13+ · Apple silicon & Intel · any AI agent that can edit files (Claude Code by default; [DeepSeek, Kimi, Qwen… work too](#use-any-ai)) · plain Markdown · MIT
+
+<img src="media/readme/ai-en.png" width="720" alt="Works with Claude, ChatGPT, Gemini, DeepSeek, Kimi, Qwen, GLM, MiniMax and Doubao">
 
 
 <img src="media/out/anew-demo.gif" width="800" alt="Annotate a sentence, hand it to the AI, and watch the note rewrite itself; annotate the AI's card and it rewrites again">
@@ -24,6 +24,8 @@ macOS · any AI agent that can edit files (Claude Code by default; [DeepSeek, Ki
 ---
 
 ## A chat ends. A note grows.
+
+<p align="center"><img src="media/readme/grow.jpg" alt="Chat bubbles fade away; the bookworm wraps itself in paper scraps; a butterfly opens out of a growing notebook"></p>
 
 You've probably done this: paste an article into a chatbot, ask good questions, get good answers… and a week later all you have is a long chat you'll never scroll through again.
 
@@ -183,7 +185,7 @@ How well it goes depends on the model: the rules ask it to fact-check you, keep 
 
 You'll need macOS 13 or later (Apple silicon or Intel) and an AI agent that can read and write files: [Claude Code](https://claude.com/claude-code) by default, with any model (see [Use any AI](#use-any-ai)).
 
-**1. Download the app.** Get **[Anew-0.8.2.dmg](https://github.com/daisycao/anew/releases/latest)** from Releases, open it, and drag **Anew** into Applications.
+**1. Download the app.** Get **[Anew-0.8.3.dmg](https://github.com/daisycao/anew/releases/latest)** from Releases, open it, and drag **Anew** into Applications.
 
 The app isn't signed with an Apple developer certificate yet, so the first time macOS will say it can't verify the developer. Click **Done**, then go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway**. You only do this once. (Or run `xattr -dr com.apple.quarantine "/Applications/知新 Anew.app"` in Terminal.)
 
@@ -244,7 +246,16 @@ A personal tool, used daily since September 2026, now shared. Honest caveats:
 - **Timeline reading time** (how long you spent on each document) comes from a separate time tracker of mine and isn't included; without it the timeline shows annotations and replies only.
 - Built on an earlier reader of mine, Paper MD, so you'll see `paper-md` in a few file names.
 
-Issues and ideas welcome. Especially: what did you read with it?
+## Want it? Tell me
+
+- ⭐ **Star this repo** if you'd like Anew to keep growing. It's the simplest way to say "I'm here".
+- 👀 **Watch → Custom → Releases** to hear when the next version ships.
+- 🗳️ **[Vote and chat in Discussions](https://github.com/daisycao/anew/discussions)**: tell me what you read with it, and which one you want first: the Chrome extension in the Web Store, a Windows version, or reading on your phone.
+- 🐞 **[Open an issue](https://github.com/daisycao/anew/issues/new)** for bugs and concrete feature requests.
+
+## Sister app
+
+[**Diem**](https://github.com/daisycao/diem): handwrite your day, get a beautiful day back. Diem plans the day; Anew is for reading and thinking. Notes attached to a block on your Diem paper open in Anew.
 
 ## License
 
@@ -255,18 +266,18 @@ MIT. `chrome/lib/` bundles Mozilla Readability (Apache 2.0) and Turndown (MIT). 
 <a name="zh"></a>
 <p align="center"><a href="#english">English</a> · <b>简体中文</b></p>
 
+<p align="center"><img src="media/readme/hero.jpg" alt="知新 Anew：小书虫在摊开的书页边写批注，一只蝴蝶从回复卡片上飞起来"></p>
+
 <div align="center">
-
-<img src="media/readme/ai-zh.png" width="720" alt="支持 Claude、ChatGPT、Gemini、DeepSeek、Kimi、通义千问、智谱 GLM、MiniMax、豆包">
-
-# 知新 Anew
 
 ### 和 AI 一起读，它在页边回你。
 
 **你划线、批注、和原文较劲；AI 帮你查证，把笔记改好，直接改在文件里。**
 **不留一长串聊天记录，只留一篇越读越好的笔记。**
 
-macOS · 任何能改文件的 AI 助手（默认 Claude Code；[DeepSeek、Kimi、千问……也行](#哪家-ai-都能用)） · 纯 Markdown · MIT
+[**下载 Mac 版**](https://github.com/daisycao/anew/releases/latest) · macOS 13+ · Apple 芯片和 Intel 都能用 · 任何能改文件的 AI 助手（默认 Claude Code；[DeepSeek、Kimi、千问……也行](#哪家-ai-都能用)） · 纯 Markdown · MIT
+
+<img src="media/readme/ai-zh.png" width="720" alt="支持 Claude、ChatGPT、Gemini、DeepSeek、Kimi、通义千问、智谱 GLM、MiniMax、豆包">
 
 
 <!-- TODO: 演示 GIF（约 15 秒）：选中一句 → 写个想法 → 交给 AI → 贴进 AI → 笔记自己改好 -->
@@ -276,6 +287,8 @@ macOS · 任何能改文件的 AI 助手（默认 Claude Code；[DeepSeek、Kimi
 ---
 
 ## 聊天会结束，笔记会长大
+
+<p align="center"><img src="media/readme/grow.jpg" alt="聊天气泡散掉；小书虫用纸片把自己裹成茧；一本越写越厚的笔记里飞出一只蝴蝶"></p>
 
 你多半这样做过：把一篇文章丢给 AI，问了一堆好问题，也拿到了好回答……一周后，手上只剩一长串再也不会翻回去的对话。
 
@@ -434,7 +447,7 @@ claude
 
 需要 macOS 13 以上（Apple 芯片和 Intel 都行），和一个能读写文件的 AI 助手：默认 [Claude Code](https://claude.com/claude-code)，模型随你换（见[哪家 AI 都能用](#哪家-ai-都能用)）。
 
-**1. 下载 App。** 到 Releases 下载 **[Anew-0.8.2.dmg](https://github.com/daisycao/anew/releases/latest)**，打开，把「知新 Anew」拖进「应用程序」。
+**1. 下载 App。** 到 Releases 下载 **[Anew-0.8.3.dmg](https://github.com/daisycao/anew/releases/latest)**，打开，把「知新 Anew」拖进「应用程序」。
 
 App 还没有用苹果开发者证书签名，第一次打开时 macOS 会说「无法验证开发者」。点「完成」，然后去 **系统设置 → 隐私与安全性**，往下拉，点 **仍要打开**。只需要做一次。（也可以在终端里跑 `xattr -dr com.apple.quarantine "/Applications/知新 Anew.app"`。）
 
@@ -495,7 +508,22 @@ Anew Notes/
 - **时间轴里的阅读时长**（每篇读了多久）来自我另一个记时间的工具，没有包含在这里；没有它，时间轴只画批注和回复。
 - 前身是我之前做的阅读器 Paper MD，所以有几个文件名里还带着 `paper-md`。
 
-欢迎提 issue 和想法。最想知道的是：你用它读了什么？
+## 认识小书虫
+
+<p align="center"><img src="media/readme/bookworm.jpg" alt="小书虫的几种样子：好奇、思考中、有点怀疑、专注阅读、豁然开朗、先休息一下；读着读着结茧，变成蝴蝶"></p>
+
+Anew 的吉祥物是一只小书虫。它在页边写批注、跟你较劲，读够了就结茧，最后变成一只翅膀上画着格线的蝴蝶：读过的东西，变成自己的理解。
+
+## 想要？告诉我
+
+- ⭐ **给这个仓库点个 Star**：想让 Anew 接着长，这是最简单的一句「我在」。
+- 👀 **右上角 Watch → Custom → 勾选 Releases**：下一版发布时会通知你。
+- 🗳️ **[来 Discussions 投票、聊天](https://github.com/daisycao/anew/discussions)**：说说你用它读了什么，最想先要哪个：Chrome 插件上架商店、Windows 版，还是在手机上读（中文就行）。
+- 🐞 **[提一个 Issue](https://github.com/daisycao/anew/issues/new)**：报 bug、提具体的功能需求。
+
+## 姊妹 app
+
+[**这一天 Diem**](https://github.com/daisycao/diem)：手写你的一天，收回漂亮的一天。Diem 管这一天，Anew 管读和想。Diem 纸上挂着的笔记，会在 Anew 里打开。
 
 ## 许可
 

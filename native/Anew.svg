@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <rect x="64" y="64" width="896" height="896" rx="200" fill="#34549a"/>
-  <rect x="236" y="250" width="552" height="540" rx="36" fill="#f5f7fb"/>
-  <rect x="236" y="250" width="30" height="540" fill="#1f2f57"/>
-  <rect x="330" y="360" width="360" height="26" rx="13" fill="#b7c0cf"/>
-  <rect x="330" y="430" width="300" height="26" rx="13" fill="#b7c0cf"/>
-  <rect x="330" y="500" width="340" height="26" rx="13" fill="#e6c27a"/>
-  <rect x="330" y="570" width="220" height="26" rx="13" fill="#b7c0cf"/>
-  <circle cx="700" cy="690" r="74" fill="#d9894f"/>
-  <path d="M668 690 l22 22 l44 -48" stroke="#f5f7fb" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><g transform="translate(100 100) scale(0.8046875)"><rect width="1024" height="1024" rx="230" fill="#1C2D4F"></rect><defs><mask id="m2" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"></rect><path d="M55 22 H83 Q88 22 88 27 V37 Q88 42 83 42 H65 L57.5 49 L58.5 42 H55 Q50 42 50 37 V27 Q50 22 55 22 Z" fill="#000" stroke="#000" stroke-width="6.3"></path></mask></defs><g transform="translate(147.54999999999995 142) scale(7.4)" fill="none" stroke-linecap="round" stroke-linejoin="round"><g mask="url(#m2)"><path d="M22 12 H64 Q72 12 72 20 V74 L58 88 H22 Q14 88 14 80 V20 Q14 12 22 12 Z" stroke="#F4F5F8" stroke-width="7"></path><path d="M72 74 H62 Q58 74 58 78 V88 Z" fill="#F4F5F8" stroke="#F4F5F8" stroke-width="7"></path><path d="M27 30 H39" stroke="#F4F5F8" stroke-width="6"></path><path d="M27 63 H60" stroke="#F7C948" stroke-width="6"></path><path d="M27 54 H60" stroke="#F4F5F8" stroke-width="6"></path><path d="M27 76 H46" stroke="#F4F5F8" stroke-width="6"></path></g><path d="M55 22 H83 Q88 22 88 27 V37 Q88 42 83 42 H65 L57.5 49 L58.5 42 H55 Q50 42 50 37 V27 Q50 22 55 22 Z" fill="#F7C948"></path><g fill="#1C2D4F"><circle cx="61" cy="32" r="2.6"></circle><circle cx="69" cy="32" r="2.6"></circle><circle cx="77" cy="32" r="2.6"></circle></g></g></g></svg>
