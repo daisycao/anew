@@ -1,3 +1,5 @@
+<p align="center"><b>English</b> · <a href="README.zh-CN.md">简体中文</a></p>
+
 <div align="center">
 
 <img src="media/readme/ai-en.png" width="720" alt="Works with Claude, ChatGPT, Gemini, DeepSeek, Kimi, Qwen, GLM, MiniMax and Doubao">
@@ -11,7 +13,6 @@
 
 macOS · any AI agent that can edit files (Claude Code by default; [DeepSeek, Kimi, Qwen… work too](#use-any-ai)) · plain Markdown · MIT
 
-[中文说明](README.zh-CN.md)
 
 <img src="media/out/anew-demo.gif" width="800" alt="Annotate a sentence, hand it to the AI, and watch the note rewrite itself; annotate the AI's card and it rewrites again">
 

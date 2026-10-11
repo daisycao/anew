@@ -1,3 +1,5 @@
+<p align="center"><a href="README.md">English</a> · <b>简体中文</b></p>
+
 <div align="center">
 
 <img src="media/readme/ai-zh.png" width="720" alt="支持 Claude、ChatGPT、Gemini、DeepSeek、Kimi、通义千问、智谱 GLM、MiniMax、豆包">
@@ -11,7 +13,6 @@
 
 macOS · 任何能改文件的 AI 助手（默认 Claude Code；[DeepSeek、Kimi、千问……也行](#哪家-ai-都能用)） · 纯 Markdown · MIT
 
-[English](README.md)
 
 <!-- TODO: 演示 GIF（约 15 秒）：选中一句 → 写个想法 → 交给 AI → 贴进 AI → 笔记自己改好 -->
 
